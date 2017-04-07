@@ -1,0 +1,297 @@
+\documentclass[11pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{geometry}
+\geometry{
+ a4paper,
+ right=14mm,
+ bottom=20mm,
+ top=18mm,
+}
+
+\lstset{
+    frame=single,
+    breaklines=true,
+    postbreak=\raisebox{0pt}[0pt][0pt]{\ensuremath{\hookrightarrow\space}},
+    basicstyle=\ttfamily,
+    showstringspaces=false,
+}
+ 
+\renewcommand{\chaptername}{Program}
+
+\title{Lab Report \\
+      \textbf{Fundamentals Of C Programming} \\
+      CSC-102}
+\author{\textbf{Aagat Raj Adhikari} \\ 18/073}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\chapter*{Information}
+All code used in this report including source code of this report itself is available at:\\ \texttt{github.com/aagat/csc102}
+\section*{Software}
+\texttt{Compiler - gcc (GCC) 6.3.1 20170306\\
+Compiler target - x86\_64-pc-linux-gnu
+}
+
+\tableofcontents
+
+\chapter{Size of data types}
+\section{Problem Statement}
+Write a program to display size in bytes of different data types using \texttt{sizeof()} operator.
+\section{Program}
+\lstinputlisting[language=c]{assignments/01-sizeof-datatypes.c}
+
+
+\chapter{Area of a circle}
+\section{Problem Statement}
+Write algorithm, flow-chart and program to compute the area of a circle with given radius defining $\pi$ where $Area = \pi r^2$.
+\section{Algorithm}
+Area of a circle with radius $r$ is given by $\pi r^2$.
+\begin{itemize}
+\item Accept input and store it in variable \texttt{radius}.
+\item Compute the area using the formula $Area = \pi r^2$.
+\item Display result.
+\end{itemize}
+\section{Flow Chart}
+\leavevmode\newpage
+\section{Program}
+\lstinputlisting[language=c]{assignments/02-area-of-circle.c}
+
+
+\chapter{Even or Odd?}
+\section{Problem Statement}
+Write algorithm, flow-chart and program to find that whether an integer $n$ is even or odd.
+\section{Algorithm}
+\begin{itemize}
+  \item Accept input and save the integer as \texttt{number}.
+  \item Divide (modulo) \texttt{number} by 2 and get the \texttt{remainder}.
+  \item If \texttt{remainder} $=$ 0, the number is even. Otherwise odd.
+\end{itemize}
+\section{Flow Chart}
+\leavevmode\newpage
+\section{Program}
+\lstinputlisting[language=c]{assignments/03-even-or-odd.c}
+
+
+\chapter{Quadratic Equation}
+\section{Problem Statement}
+Write algorithm, pseudo-code as well as draw flow chart to compute the root of the quadratic equation $ ax^2+bx+c = 0$ for given input a, b and c.
+\section{Algorithm}
+The standard form of quadratic equation is: $ax^2+bx+c=0$ where $a$, $b$ and $c$ are real numbers and $a \neq 0$ \\
+The term b2-4ac is known as the determinant of a quadratic equation. The determinant tells the nature of the roots.
+\begin{itemize}
+\item If determinant is greater than 0, the roots are real and different.
+\item If determinant is equal to 0, the roots are real and equal.
+\item If determinant is less than 0, the roots are complex and different.
+\end{itemize}
+So, the forumla for finding the roots of a quadratic equation for different conditions are:
+\begin{itemize}
+\item If determinant is greater than 0, $root_1 = \frac{-b+\sqrt{b^2-4ac}}{2a}$, $root_2 = \frac{-b-\sqrt{b^2-4ac}}{2a}$
+\item If determinant is equal to 0, $root_1=root_2=\frac{-b}{2a}$
+\item If determinant is less than 0, $root_1 = \frac{-b}{2a}+\frac{i\sqrt{b^2-4ac}}{2a}$, $root_2 = \frac{-b}{2a}-\frac{i\sqrt{b^2-4ac}}{2a}$
+\end{itemize}
+\section{Pseudo-code}
+\begin{lstlisting}
+input a,b,c
+determinant = b^2 - 4ac
+if determinant > 0
+    root1 = (-b+sqrt(determinant))/2*a
+    root2 = (-b+sqrt(determinant))/2*a
+    display root1, root2
+else if determinant == 0
+    root1 = root2 = -b/(2*a)
+    display root1, root2
+else
+    realPart = -b/(2*a)
+    imaginaryPart = sqrt(-determinant)/(2*a)
+    display realpart-imaginarypart
+\end{lstlisting}
+\section{Flow Chart}
+\leavevmode\newpage
+\section{Program}
+\lstinputlisting[language=c]{assignments/04-quadratic-equation.c}
+
+
+\chapter{Integers in an Array}
+\section{Problem Statement}
+Write an algorithm, flow-chart and program to input n numbers in an array and find the sum of average of elements in that array. Also print the largest and smallest integer.
+\section{Algorithm}
+Following algorithms were used to complete this assignment:
+\subsection{Average}
+An arithmetic mean for n mumbers is given by:\\
+$
+\frac{1}{n}\sum_{i=1}^{n}a_i
+$ \\
+To obtain the arithmetic for $n$ integers in an \texttt{array}, following step should be performed.
+\begin{itemize}
+  \item Loop through each element in the \texttt{array}.
+  \item Add each element to intermediate $sum$ until all elements are exhausted.
+  \item Divide the obtained $sum$ by total number of elements in given \texttt{array} ($n$).
+\end{itemize}
+\subsection{Largest integer}
+The largest integer can be obtained from an \texttt{array} of $n$ integers using following algorithm.
+\begin{itemize}
+\item Loop through each elements in the given array.
+\item If an integer in current iteration is larger than largest integer till this iteration, store it as \texttt{largest}. Move on to next iteration if the condition doesn't meet.
+\item Display the value stored in \texttt{largest} after all elements are exhausted.
+\end{itemize}
+\subsection{Smallest integer}
+The smallest integer can be obtained from an \texttt{array} of $n$ integers using following algorithm.
+\begin{itemize}
+\item Loop through each elements in the given array.
+\item If an integer in current iteration is larger than smallest integer till this iteration, store it as \texttt{smallest}. Move on to next iteration if the condition doesn't meet.
+\item Display the value stored in \texttt{smallest} after all elements are exhausted.
+\end{itemize}
+\section{Flow Chart}
+\leavevmode\newpage
+\leavevmode\newpage
+\section{Program}
+\lstinputlisting[language=c]{assignments/05-integers-array.c}
+
+
+\chapter{Simple Calculator}
+\section{Problem Statement}
+Write a program that takes input of two numbers and an operator \texttt{(+ - * /)} as input and pass those numbers and an operator to the function. The function should calculate the result of two numbers as indicated by operator and return the result. Display the result of computation in your program.
+\section{Program}
+\lstinputlisting[language=c]{assignments/06-simple-calculator.c}
+
+
+\chapter{Recursion}
+\section{Problem Statement}
+Write an algorithm and program to compute the following using recursion.
+\begin{enumerate}
+  \item factorial of an integer $n$.
+  \item computation of $a^b$ (a raised to the power b)
+\end{enumerate}
+\section{Algorithm}
+\subsection{Factorial}
+The factorial of a positive integer $n$ can be obtained recursively using the following algorithm.
+\begin{itemize}
+\item If $n=0$, return 1.
+\item Multiply $n$ by $(n-1)!$ and return the result. 
+\end{itemize}
+\subsection{Computing $a^b$}
+The result of computation of $a^b$ (a raised to the power b) can be obtained using following algorithm.
+\begin{itemize}
+\item If $b = 1$, return $a$.
+\item Multiply $a$ by the result of $a^{b-1}$.
+\end{itemize}
+\section{Program}
+    \subsection{Factorial}
+        \lstinputlisting[language=c]{assignments/07-recursion-a.c}
+    \subsection{Power}
+        \lstinputlisting[language=c]{assignments/07-recursion-b.c}
+
+        
+\chapter{Prime Numbers}
+\section{Problem Statement}
+Write an algorithm and program to print the prime numbers up to 100.
+\section{Algorithm}
+A natural number is called a prime number (or a prime) if it has exactly two positive divisors, 1 and the number itself. The first 100 prime numbers can be computed using following algorithm:
+\begin{itemize}
+\item Loop through all numbers from 1 to 100.
+\item Inside each iteration, divide the number by every number less than itself except 1.
+\item If remainder $\neq$ 0, the number prime. Otherwise \texttt{break} from the loop.
+\end{itemize}
+\section{Program}
+\lstinputlisting[language=c]{assignments/08-prime-numbers.c}
+
+
+\chapter{Matrix}
+\section{Problem Statement}
+Write a program to transpose a $m \times n$ matrix and show the input matrix and its transpose.
+\section{Algorithm}
+The transpose of a matrix is an operator which flips a matrix over its diagonal, that is it switches the row and column indices of the matrix by producing another matrix denoted as $A^T$.\footnote{https://en.wikipedia.org/wiki/Transpose} It is achieved by any one of the following equivalent actions:
+\begin{itemize}
+\item reflect $A$ over its main diagonal to obtain $A^T$
+\item write the rows of $A$ as the columns of $A^T$
+\item write the columns of $A$ as the rows of $A^T$
+\end{itemize}
+Formally, the $i$th row, $j$th column element of $A^T$ is the j th row, i th column element of $A$: \\\\
+$
+\begin{bmatrix}
+A^T
+\end{bmatrix}_{ij}
+=
+\begin{bmatrix}
+A_{ji}
+\end{bmatrix}
+$\\\\
+If $A$ is an $m \times n$ matrix then AT is an $n \times m$ matrix.
+\section{Program}
+\lstinputlisting[language=c]{assignments/09-martix.c}
+
+
+\chapter{String Manipulation}
+\section{Problem Statement}
+Write a program to perform the following regarding the string.
+\begin{enumerate}
+  \item Input a string and print your input string
+  \item Compute the length of that string and display the length
+  \item Copy the string into another string and show both strings
+  \item Input another string into first string and concatenate both of them and print the result.
+  \item Print the string in upper case.
+\end{enumerate}
+\emph{Do all these operations in single program without using the library functions for strings.}
+\section{Program}
+\lstinputlisting[language=c]{assignments/10-string.c}
+
+
+\chapter{Dynamic Memory Allocation}
+\section{Problem Statement}
+Write a program defining a structure to store the record of a student that includes \texttt{firstName}, \texttt{lastName}, \texttt{address}, \texttt{class}, \texttt{rollNo}, \texttt{age} etc. Input the records for \texttt{n} students and show all the records using dynamic memory allocation.
+\section{Program}
+\lstinputlisting[language=c]{assignments/11-memory-allocation.c}
+
+
+\chapter{File Handling}
+\section{Problem Statement}
+Write a program to open a new file, read \texttt{rollNo}, \texttt{name}, \texttt{address}, and \texttt{phoneNo} until the user says no. After reading all the data, write it to a file. Display the records from file in alphabetical order of student name.
+\section{Program}
+\lstinputlisting[language=c]{assignments/12-file-handling.c}
+
+
+\chapter{Sorting}
+\section{Problem Statement}
+Write a program to input \texttt{n} integers in an array and display them in ascending order.
+\section{Algorithm}
+An algorithm called Bubble Sort\footnote{https://en.wikipedia.org/wiki/Bubble\_sort} was used to arrange the integers in ascending order.
+\begin{itemize}
+\item Input number of items to be sorted and initialize an \texttt{array} of length $n$.
+\item Enter each integer in a loop and store it in an \texttt{array}
+\item Create a \texttt{loop} that executes $n$ times
+\item Create another loop that loops through $(n-1)$ times.
+\item Inside the loop, compare the $n_{th}$ element of \texttt{array} with $(n+1)_{th}$ element.
+\item If $n_{th}$ element $> (n+1)_{th}$ element, swap their position. Otherwise do nothing.
+\item Print each element of resulting \texttt{array} after the loop is executed $n$ times.
+\end{itemize}
+\section{Program}
+\lstinputlisting[language=c]{assignments/13-sorting.c}
+
+
+\chapter{Floyd's Triangle}
+\section{Problem Statement}
+Write a program using loop to print the following floyd's triangle as given below when input is \texttt{n}.
+\begin{lstlisting}
+  1
+  2 3
+  4 5 6
+  7 8 9 10
+  11 12 13 14 up to n rows
+  \end{lstlisting}
+\section{Program}
+\lstinputlisting[language=c]{assignments/14-floyds-triangle.c}
+
+
+\chapter{Graphics}
+\section{Problem Statement}
+Write a program to display a line, circle, a rectangle, ellipse one by one using graphical function.
+\section{Program}
+\lstinputlisting[language=c]{assignments/15-graphics.c}
+
+\end{document}
