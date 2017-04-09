@@ -65,8 +65,9 @@ void main() {
 
     int rc = 0;
     int c;
-    // something eats the first char of first line?
+
     while( (c = fgetc(dbr)) != EOF) {
+        ungetc(c,dbr);
         fstudents = realloc(fstudents, sizeof(Student) * (rc+1));
         fscanf(dbr,"%s %s %s %d %d %d", &fstudents[rc].firstName, &fstudents[rc].lastName, &fstudents[rc].address, &fstudents[rc].class, &fstudents[rc].rollNo, &fstudents[rc].age);
         rc++;
